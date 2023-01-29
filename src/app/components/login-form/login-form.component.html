@@ -1,0 +1,52 @@
+<mat-card class="main">
+  <mat-card-header>
+    <mat-card-title>Formulario de registro</mat-card-title>
+    <mat-card-subtitle>Ingrese sus datos</mat-card-subtitle>
+  </mat-card-header>
+  <br/>
+  <mat-card-content>
+    <div class="container">
+      <form [formGroup]="form" (ngSubmit)="registration()">
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="pat@example.com" required>
+          <mat-error *ngIf="form.controls['email'].touched && form.controls['email'].errors?.['required']">
+            Email requerido
+          </mat-error>
+          <mat-error *ngIf="form.controls['email'].touched && form.controls['email'].errors?.['pattern']">
+            Formato invalido
+          </mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Nombre de usuario</mat-label>
+          <input matInput formControlName="userName" required>
+          <mat-error *ngIf="form.controls['userName'].touched && form.controls['userName'].errors?.['required']">
+            Nombre de usuario requerido
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Contraseña</mat-label>
+          <input matInput formControlName="password"
+                 placeholder="8 caracteres minimo que contenga: 1 mayuscula + 1 minuscula + 1 caracter especial + 1 número"
+                 required>
+          <mat-error *ngIf="form.controls['password'].touched && form.controls['password'].errors?.['required']">
+            Contraseña requerida
+          </mat-error>
+          <mat-error *ngIf="form.controls['password'].touched && form.controls['password'].errors?.['pattern']">
+            Contraseña invalida. Por favor revise los requerimientos de contraseña
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button type="reset">Limpiar</button>
+        <button mat-raised-button color="primary"
+                type="submit"
+                [disabled]="form.invalid">Registro
+        </button>
+      </form>
+    </div>
+
+  </mat-card-content>
+</mat-card>

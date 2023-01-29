@@ -1,0 +1,11 @@
+.main {
+  display: flex;
+  height: 75%;
+  width: 100%;
+  align-items: center;
+  background-color: white;
+}
+
+.full-width {
+  width: 100%;
+}
